@@ -44,6 +44,7 @@ response = requests.get(url)
 page = str(BeautifulSoup(response.content))
 start_link = page.find("a href")
 
+
 def getURL(page):
     start_link = page.find("a href")
     if start_link == -1:
@@ -63,7 +64,7 @@ while True:
 
 # filter down to only links that endwith .torrent
 # TODO: might exclude links that have variables at the end
-links = filter(lambda x:x.endswith(".torrent"), pagelinks)
+links = filter(lambda x: x.endswith(".torrent"), pagelinks)
 
 # make sure we don't already have the torrent
 for url in links:
@@ -84,4 +85,4 @@ for link in downloadlist:
 
 # writing blacklist to file
 with open(os.getcwd() + '/blacklist.txt', 'w') as f:
-  f.write('\n'.join(blacklist))
+    f.write('\n'.join(blacklist))
